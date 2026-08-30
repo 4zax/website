@@ -84,15 +84,23 @@
       margin-bottom: 16px;
     }
 
-    .friend-card {
-      background-color: var(--bg-default);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 16px;
-      margin-bottom: 16px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+    .friend-card::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 120px;
+      height: 120px;
+      background-image: var(--head-img);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.5; 
+      transform: scaleX(-1);
+      pointer-events: none;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      z-index: 0;
     }
 
     .friend-avatar {
@@ -157,13 +165,15 @@
       <div class="friends-section-title">なかま</div>
 
       <div class="friend-card">
-        <img src="https://mc-heads.net/avatar/4zax" alt="4zax" class="friend-avatar">
-        <div class="friend-info">
-          <div class="friend-name">Azax</div>
-          <p class="friend-message">
-            おれだよ<br>
-            へんなやつ
-          </p>
+        <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/4zax');">
+          <img src="https://mc-heads.net/avatar/4zax" alt="4zax" class="friend-avatar">
+          <div class="friend-info">
+            <div class="friend-name">Azax</div>
+            <p class="friend-message">
+              おれだよ<br>
+              へんなやつ
+            </p>
+          </div>
         </div>
       </div>
 
