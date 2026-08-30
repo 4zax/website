@@ -77,13 +77,29 @@
       text-decoration: underline;
     }
 
-    /* ---- 友達紹介用のスタイル（追加部分） ---- */
+    /* ---- 友達紹介用のスタイル ---- */
     .friends-section-title {
       font-size: 1.2rem;
       color: var(--cyan);
       margin-bottom: 16px;
     }
 
+    .friend-card {
+      background-color: var(--bg-default);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+
+      /* 背景画像を切り抜く・重ね順の設定 */
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 背景の3Dヘッド画像（左右反転＆透明度50%） */
     .friend-card::before {
       content: "";
       position: absolute;
@@ -95,8 +111,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.5; 
-      transform: scaleX(-1);
+      opacity: 0.5; /* 透明度 50% */
+      transform: scaleX(-1); /* 水平方向に反転させて左向きにする */
       pointer-events: none;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
@@ -111,13 +127,16 @@
       background-color: var(--bg-subtle);
       border: 1px solid var(--border);
       flex-shrink: 0;
-
       image-rendering: pixelated;
       image-rendering: crisp-edges;
+      position: relative;
+      z-index: 1;
     }
 
     .friend-info {
       flex: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .friend-name {
@@ -175,7 +194,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Akmn');">
         <img src="https://mc-heads.net/avatar/Akmn" alt="Akmn" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">あらーむ</div>
@@ -186,7 +205,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/alexo114514');">
         <img src="https://mc-heads.net/avatar/alexo114514" alt="alexo114514" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">あれくす</div>
@@ -197,7 +216,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Carubi_204483');">
         <img src="https://mc-heads.net/avatar/Carubi_204483" alt="Carubi_204484" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">カルビ</div>
@@ -208,7 +227,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/enteralmimi');">
         <img src="https://mc-heads.net/avatar/enteralmimi" alt="enteralmimi" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">えんたあ</div>
@@ -219,7 +238,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/hamatoro965');">
         <img src="https://mc-heads.net/avatar/hamatoro965" alt="hamatoro965" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">浜土呂</div>
@@ -230,7 +249,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/haruria728');">
         <img src="https://mc-heads.net/avatar/haruria728" alt="haruria728" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">Haruria</div>
@@ -241,7 +260,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/hatuonki');">
         <img src="https://mc-heads.net/avatar/hatuonki" alt="hatuonki" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">発音機</div>
@@ -252,7 +271,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/IRIOM');">
         <img src="https://mc-heads.net/avatar/IRIOM" alt="IRIOM" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">ふゆげ</div>
@@ -263,7 +282,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/KanKagi5');">
         <img src="https://mc-heads.net/avatar/KanKagi5" alt="KanKagi5" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">KanKagi</div>
@@ -274,7 +293,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/koott00');">
         <img src="https://mc-heads.net/avatar/koott00" alt="koott00" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">こうちゃ</div>
@@ -285,7 +304,7 @@
         </div>
       </div>
       
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/koutyan35');">
         <img src="https://mc-heads.net/avatar/koutyan35" alt="koutyan35" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">こうちゃん</div>
@@ -296,7 +315,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/lm0kenp1');">
         <img src="https://mc-heads.net/avatar/lm0kenp1" alt="lm0kenp1" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">いもけんぴ</div>
@@ -307,7 +326,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/MatchaGemes_');">
         <img src="https://mc-heads.net/avatar/MatchaGemes_" alt="MatchaGemes_" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">まっちゃ</div>
@@ -318,7 +337,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/n73e');">
         <img src="https://mc-heads.net/avatar/n73e" alt="n73e" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">クワ</div>
@@ -329,7 +348,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Neko_1201');">
         <img src="https://mc-heads.net/avatar/Neko_1201" alt="Neko_1201" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">ねこ</div>
@@ -340,18 +359,18 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/pipy1379');">
         <img src="https://mc-heads.net/avatar/pipy1379" alt="pipy1379" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">RyuKi</div>
           <p class="friend-message">
             脱獄ごっこがうまい<br>
-            最近全然ゲームしてくれないのでつまらない >:(
+            最近全然ゲームしてくれないのでつまらない &gt;:(
           </p>
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/rakotoyukkuri0');">
         <img src="https://mc-heads.net/avatar/rakotoyukkuri0" alt="rakotoyukkuri0" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">らこと</div>
@@ -362,7 +381,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Sabakanmelmpc');">
         <img src="https://mc-heads.net/avatar/Sabakanmelmpc" alt="Sabakanmelmpc" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">鯖缶</div>
@@ -373,7 +392,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/saon777');">
         <img src="https://mc-heads.net/avatar/saon777" alt="saon777" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">紗音</div>
@@ -384,7 +403,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/shounan_exp');">
         <img src="https://mc-heads.net/avatar/shounan_exp" alt="shounan_exp" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">しょーなん</div>
@@ -395,7 +414,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Tsubu2525');">
         <img src="https://mc-heads.net/avatar/Tsubu2525" alt="Tsubu2525" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">つぶ</div>
@@ -406,7 +425,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/xRoyline');">
         <img src="https://mc-heads.net/avatar/xRoyline" alt="xRoyline" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">Royl</div>
@@ -417,7 +436,7 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/YnoKIWAMI');">
         <img src="https://mc-heads.net/avatar/YnoKIWAMI" alt="YnoKIWAMI" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">ややま</div>
@@ -428,13 +447,12 @@
         </div>
       </div>
 
-      <div class="friend-card">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/yunamo_2508');">
         <img src="https://mc-heads.net/avatar/yunamo_2508" alt="yunamo_2508" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">ゆなも</div>
           <p class="friend-message">
             ゆなも、すべってるよ～ん<br>
-            
           </p>
         </div>
       </div>
