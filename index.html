@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>Azax's Website</title>
   <style>
@@ -62,6 +62,9 @@
 
     .social-links li {
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .social-links a {
@@ -73,6 +76,51 @@
     .social-links a:hover {
       text-decoration: underline;
     }
+
+    /* ---- 友達紹介用のスタイル（追加部分） ---- */
+    .friends-section-title {
+      font-size: 1.2rem;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    .friend-card {
+      background-color: var(--bg-default);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .friend-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .friend-info {
+      flex: 1;
+    }
+
+    .friend-name {
+      margin: 0 0 6px 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .friend-message {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
   </style>
 </head>
 <body>
@@ -80,14 +128,14 @@
   <div class="container">
     <h1 class="title">Azax<span class="quote">'</span>s Website</h1>
 
-    <hr size= "5" noshade>
+    <hr size="5" noshade>
     
     <ul class="social-links">
-    <li><i class="fa-brands fa-github"></i> GitHub : <a href="https://github.com/4zax" target="_blank" rel="noopener noreferrer">@4zax</a></li>
-    <li><i class="fa-brands fa-youtube"></i> YouTube : <a href="https://www.youtube.com/@Azax6" target="_blank" rel="noopener noreferrer">@Azax6</a></li>
-    <li><i class="fa-brands fa-x-twitter"></i> X(Twitter) : <a href="https://x.com/4zax0" target="_blank" rel="noopener noreferrer">@4zax0</a></li>
+      <li><i class="fa-brands fa-github"></i> GitHub : <a href="https://github.com/4zax" target="_blank" rel="noopener noreferrer">@4zax</a></li>
+      <li><i class="fa-brands fa-youtube"></i> YouTube : <a href="https://www.youtube.com/@Azax6" target="_blank" rel="noopener noreferrer">@Azax6</a></li>
+      <li><i class="fa-brands fa-x-twitter"></i> X(Twitter) : <a href="https://x.com/4zax0" target="_blank" rel="noopener noreferrer">@4zax0</a></li>
     </ul>
-    <hr size= "5" noshade>
+    <hr size="5" noshade>
 
     <br>
     <p class="message">
@@ -99,8 +147,12 @@
       ｱﾑﾆｮﾑﾆｮﾑﾔﾑﾖﾑ
     </p>
     <br>
-    
-  </div>
 
-</body>
-</html>
+    <hr size="5" noshade>
+
+    <div class="friends-section">
+      <div class="friends-section-title">Friends</div>
+
+      <div class="friend-card">
+        <img src="https://via.placeholder.com/64" alt="友達のアイコン" class="friend-avatar">
+        <div class="friend-info">
