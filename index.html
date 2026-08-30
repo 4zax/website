@@ -89,15 +89,18 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 16px;
+      padding-bottom: 28px; /* 右下のIDテキストと重ならないよう下部に余白を確保 */
       margin-bottom: 16px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
 
+      /* 背景画像を切り抜く・重ね順の設定 */
       position: relative;
       overflow: hidden;
     }
 
+    /* 背景の3Dヘッド画像（左右反転＆右:50% -> 左:25%の透明度グラデーション） */
     .friend-card::before {
       content: "";
       position: absolute;
@@ -110,8 +113,10 @@
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0.5;
+
       -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
       mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
+
       transform: scaleX(-1);
       pointer-events: none;
       image-rendering: pixelated;
@@ -150,6 +155,21 @@
       margin: 0;
       font-size: 0.95rem;
       color: var(--text-main);
+    }
+
+    /* 右下のIDテキスト用スタイル */
+    .friend-id {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5); /* 白色・透明度50% */
+      /* コード風・ゲーム風のオシャレな等幅フォント指定 */
+      font-family: "Consolas", "Courier New", "Fira Code", monospace;
+      letter-spacing: 0.5px;
+      z-index: 2;
+      pointer-events: none;
+      user-select: none;
     }
   </style>
 </head>
@@ -192,6 +212,7 @@
             へんなやつ
           </p>
         </div>
+        <div class="friend-id">4zax</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Akmn');">
@@ -203,6 +224,7 @@
             こいつはかわいくない
           </p>
         </div>
+        <div class="friend-id">Akmn</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/alexo114514');">
@@ -214,6 +236,7 @@
             はやくしゃべれや
           </p>
         </div>
+        <div class="friend-id">alexo114514</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Carubi_204483');">
@@ -225,6 +248,7 @@
             おれのマイクラ経済鯖で一番お金持ちだった強欲なやつ
           </p>
         </div>
+        <div class="friend-id">Carubi_204483</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/enteralmimi');">
@@ -236,6 +260,7 @@
             頻繁にdiscordで顔出しする
           </p>
         </div>
+        <div class="friend-id">enteralmimi</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/hamatoro965');">
@@ -247,6 +272,7 @@
             いがいと素顔は爽やかでかっこいい
           </p>
         </div>
+        <div class="friend-id">hamatoro965</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/haruria728');">
@@ -258,6 +284,7 @@
             ずっと忙しそう
           </p>
         </div>
+        <div class="friend-id">haruria728</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/hatuonki');">
@@ -269,6 +296,7 @@
             "発音機"か"焼き鳥"かどっちでよべばいいのかわからない
           </p>
         </div>
+        <div class="friend-id">hatuonki</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/IRIOM');">
@@ -280,6 +308,7 @@
             下ネタがおおくて声がうるさい、よく声が途切れる
           </p>
         </div>
+        <div class="friend-id">IRIOM</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/KanKagi5');">
@@ -291,6 +320,7 @@
             何してるかよくわかんない なにをされているの
           </p>
         </div>
+        <div class="friend-id">KanKagi5</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/koott00');">
@@ -302,8 +332,9 @@
             えんたあの次によく顔出しする 歌舞伎町のホストやってそうな顔
           </p>
         </div>
+        <div class="friend-id">koott00</div>
       </div>
-      
+
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/koutyan35');">
         <img src="https://mc-heads.net/avatar/koutyan35" alt="koutyan35" class="friend-avatar">
         <div class="friend-info">
@@ -313,6 +344,7 @@
             私たちには到底理解が及ばない
           </p>
         </div>
+        <div class="friend-id">koutyan35</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/lm0kenp1');">
@@ -324,6 +356,7 @@
             目が細い。
           </p>
         </div>
+        <div class="friend-id">lm0kenp1</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/MatchaGemes_');">
@@ -335,6 +368,7 @@
             話がうまい
           </p>
         </div>
+        <div class="friend-id">MatchaGemes_</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/n73e');">
@@ -346,6 +380,7 @@
             やってることがイカしてる、受験がんばれ
           </p>
         </div>
+        <div class="friend-id">n73e</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Neko_1201');">
@@ -357,6 +392,7 @@
             こいつが占いCOしたら9割9分 偽CO
           </p>
         </div>
+        <div class="friend-id">Neko_1201</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/pipy1379');">
@@ -368,6 +404,7 @@
             最近全然ゲームしてくれないのでつまらない &gt;:(
           </p>
         </div>
+        <div class="friend-id">pipy1379</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/rakotoyukkuri0');">
@@ -379,10 +416,11 @@
             ネット上で一番長い付き合いかもしれない
           </p>
         </div>
+        <div class="friend-id">rakotoyukkuri0</div>
       </div>
 
-      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Sabakanmelmpc');">
-        <img src="https://mc-heads.net/avatar/Sabakanmelmpc" alt="Sabakanmelmpc" class="friend-avatar">
+      <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/SabakanmelmPC');">
+        <img src="https://mc-heads.net/avatar/SabakanmelmPC" alt="SabakanmelmPC" class="friend-avatar">
         <div class="friend-info">
           <div class="friend-name">鯖缶</div>
           <p class="friend-message">
@@ -390,6 +428,7 @@
             ずっとにやにやしてる気がする
           </p>
         </div>
+        <div class="friend-id">SabakanmelmPC</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/saon777');">
@@ -401,6 +440,7 @@
             vcにいとけばとりあえず全てが無条件で大丈夫になる
           </p>
         </div>
+        <div class="friend-id">saon777</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/shounan_exp');">
@@ -412,6 +452,7 @@
             よく社会人できてるなとしみじみ思う
           </p>
         </div>
+        <div class="friend-id">shounan_exp</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/Tsubu2525');">
@@ -423,6 +464,7 @@
             髪の色がよく変わる 124万色搭載 ゲーミングヘアー！
           </p>
         </div>
+        <div class="friend-id">Tsubu2525</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/xRoyline');">
@@ -434,6 +476,7 @@
             顎に手を当てて物事を冷静に考えていそう
           </p>
         </div>
+        <div class="friend-id">xRoyline</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/YnoKIWAMI');">
@@ -445,6 +488,7 @@
             VCにいるとうれしい
           </p>
         </div>
+        <div class="friend-id">YnoKIWAMI</div>
       </div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/yunamo_2508');">
@@ -455,6 +499,7 @@
             ゆなも、すべってるよ～ん<br>
           </p>
         </div>
+        <div class="friend-id">yunamo_2508</div>
       </div>
       
     </div>
