@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="[https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap](https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap)" rel="stylesheet">
   <title>Azax's Website</title>
   <style>
     :root {
@@ -77,7 +77,7 @@
       text-decoration: underline;
     }
 
-    /* ---- 友達紹介用のスタイル ---- */
+    
     .friends-section-title {
       font-size: 1.2rem;
       color: var(--cyan);
@@ -89,18 +89,17 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 16px;
-      padding-bottom: 28px; /* 右下のIDテキストと重ならないよう下部に余白を確保 */
+      padding-bottom: 28px;
       margin-bottom: 16px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
 
-      /* 背景画像を切り抜く・重ね順の設定 */
       position: relative;
       overflow: hidden;
     }
 
-    /* 背景の3Dヘッド画像（左右反転＆右:50% -> 左:25%の透明度グラデーション） */
+
     .friend-card::before {
       content: "";
       position: absolute;
@@ -157,16 +156,14 @@
       color: var(--text-main);
     }
 
-    /* 右下のIDテキスト用スタイル */
     .friend-id {
       position: absolute;
       bottom: 8px;
       right: 12px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5); /* 白色・透明度50% */
-      /* コード風・ゲーム風のオシャレな等幅フォント指定 */
-      font-family: "Consolas", "Courier New", "Fira Code", monospace;
-      letter-spacing: 0.5px;
+      font-size: 2.0rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: "Press Start 2P", monospace;
+      letter-spacing: 0.25px;
       z-index: 2;
       pointer-events: none;
       user-select: none;
