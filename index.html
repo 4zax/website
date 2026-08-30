@@ -94,12 +94,10 @@
       gap: 16px;
       align-items: flex-start;
 
-      /* 背景画像を切り抜く・重ね順の設定 */
       position: relative;
       overflow: hidden;
     }
 
-    /* 背景の3Dヘッド画像（左右反転＆透明度50%） */
     .friend-card::before {
       content: "";
       position: absolute;
@@ -111,8 +109,10 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.5; /* 透明度 50% */
-      transform: scaleX(-1); /* 水平方向に反転させて左向きにする */
+      opacity: 0.5;
+      -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
+      mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
+      transform: scaleX(-1);
       pointer-events: none;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
