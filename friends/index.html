@@ -83,7 +83,6 @@
       margin-bottom: 16px;
     }
 
-    /* --- 追加・修正箇所: friend-card の枠線およびレイアウト --- */
     .friend-card {
       position: relative;
       display: flex;
@@ -97,7 +96,6 @@
       overflow: hidden;
     }
 
-    /* 背景画像（スキンヘッド）の擬似要素ルール */
     .friend-card::before {
       content: "";
       position: absolute;
@@ -164,7 +162,6 @@
       user-select: none;
     }
   
-    /* --- Page menu --- */
     .menu-button {
       position: fixed;
       top: 20px;
@@ -252,16 +249,16 @@
 
   <nav class="menu" id="menu" aria-label="サイトメニュー">
     <div class="menu-title">Menu</div>
-    <a href="/">ホーム</a>
-    <a href="/friends">なかま</a>
+    <a href="/">HOME</a>
+    <a href="/friends"><b>Friends</b></a>
     <a href="/history">History</a>
   </nav>
 
   <div class="container">
-    <h1 class="title">なかま</h1>
+    <h1 class="title">Friend</h1>
     <hr size="5" noshade>
     <div class="friends-section">
-      <div class="friends-section-title">なかま</div>
+      <div class="friends-section-title">愉快な仲間たち</div>
 
       <div class="friend-card" style="--head-img: url('https://mc-heads.net/head/4zax/left');">
         <img src="https://mc-heads.net/avatar/4zax" alt="4zax" class="friend-avatar">
