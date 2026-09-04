@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>Projects - Azax's Website</title>
+
   <style>
     :root {
       --bg-default: #0d1117;
@@ -64,41 +65,98 @@
       transform: translateY(-2px);
     }
 
-    .project-name {
-      margin: 0 0 8px 0;
-      color: #ffffff;
-      font-size: 1.2rem;
-    }
-
-    .project-description {
-      margin: 0 0 16px 0;
-      font-size: 0.95rem;
-    }
-
-    .project-tags {
+    .project-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
-    .project-tag {
-      padding: 3px 8px;
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-subtle);
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 6px;
       color: var(--cyan);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .project-info {
+      min-width: 0;
+    }
+
+    .project-name {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .project-type {
+      margin: 2px 0 0 0;
+      color: #8b949e;
+      font-size: 0.85rem;
+    }
+
+    .audio-progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .audio-progress span {
+      min-width: 36px;
+      color: #8b949e;
       font-size: 0.8rem;
       font-family: "Consolas", "Courier New", monospace;
     }
 
-    .project-links a {
-      color: #58a6ff;
-      text-decoration: none;
-      font-weight: bold;
+    .audio-progress span:last-child {
+      text-align: right;
     }
 
-    .project-links a:hover {
-      text-decoration: underline;
+    .audio-progress input {
+      flex: 1;
+      height: 4px;
+      accent-color: var(--cyan);
+      cursor: pointer;
+    }
+
+    .project-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .project-controls button,
+    .project-controls a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background-color: var(--bg-subtle);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .project-controls button:hover,
+    .project-controls a:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      background-color: var(--bg-default);
     }
 
     .menu-button {
@@ -177,9 +235,15 @@
     }
   </style>
 </head>
+
 <body>
 
-  <button class="menu-button" id="menuButton" aria-label="メニューを開く" aria-expanded="false">
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+  >
     <i class="fa-solid fa-bars"></i>
   </button>
 
@@ -187,12 +251,22 @@
 
   <nav class="menu" id="menu" aria-label="サイトメニュー">
     <div class="menu-title">Menu</div>
-    <a href="/"><i class="fa-solid fa-house"></i> HOME</a>
-    <a href="/friends"><i class="fa-solid fa-face-smile"></i> Friends</a>
-    <a href="/projects"><i class="fa-solid fa-folder-open"></i> <b>Projects</b></a>
+
+    <a href="/">
+      <i class="fa-solid fa-house"></i> HOME
+    </a>
+
+    <a href="/friends">
+      <i class="fa-solid fa-face-smile"></i> Friends
+    </a>
+
+    <a href="/projects">
+      <i class="fa-solid fa-folder-open"></i> <b>Projects</b>
+    </a>
   </nav>
 
   <div class="container">
+
     <h1 class="title">Projects</h1>
 
     <hr>
@@ -203,25 +277,60 @@
 
     <hr>
 
-    <!--
-      作品を追加するときは、この project-card をコピーしてください。
+    <div class="project-card">
 
-      <div class="project-card">
-        <h2 class="project-name">作品名</h2>
-        <p class="project-description">作品の説明</p>
+      <div class="project-header">
 
-        <div class="project-tags">
-          <span class="project-tag">Minecraft</span>
-          <span class="project-tag">Java</span>
+        <div class="project-icon">
+          <i class="fa-solid fa-music"></i>
         </div>
 
-        <div class="project-links">
-          <a href="https://github.com/4zax" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
+        <div class="project-info">
+          <h2 class="project-name">test.mp3</h2>
+          <p class="project-type">Audio</p>
         </div>
+
       </div>
-    -->
+
+      <audio id="testAudio" src="/media/test.mp3"></audio>
+
+      <div class="audio-progress">
+
+        <span id="currentTime">0:00</span>
+
+        <input
+          type="range"
+          id="progress"
+          min="0"
+          max="100"
+          value="0"
+        >
+
+        <span id="duration">0:00</span>
+
+      </div>
+
+      <div class="project-controls">
+
+        <button id="playButton">
+          <i class="fa-solid fa-play"></i>
+          再生
+        </button>
+
+        <button id="stopButton">
+          <i class="fa-solid fa-stop"></i>
+          停止
+        </button>
+
+        <a href="/media/test.mp3" download>
+          <i class="fa-solid fa-download"></i>
+          Download
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
 
   <script>
@@ -232,7 +341,9 @@
     function setMenu(open) {
       menu.classList.toggle("open", open);
       menuOverlay.classList.toggle("open", open);
+
       menuButton.setAttribute("aria-expanded", open);
+
       menuButton.innerHTML = open
         ? '<i class="fa-solid fa-xmark"></i>'
         : '<i class="fa-solid fa-bars"></i>';
@@ -242,10 +353,77 @@
       setMenu(!menu.classList.contains("open"));
     });
 
-    menuOverlay.addEventListener("click", () => setMenu(false));
+    menuOverlay.addEventListener("click", () => {
+      setMenu(false);
+    });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setMenu(false);
+      if (event.key === "Escape") {
+        setMenu(false);
+      }
+    });
+
+    const testAudio = document.getElementById("testAudio");
+    const playButton = document.getElementById("playButton");
+    const stopButton = document.getElementById("stopButton");
+    const progress = document.getElementById("progress");
+    const currentTime = document.getElementById("currentTime");
+    const duration = document.getElementById("duration");
+
+    function formatTime(time) {
+      if (isNaN(time)) {
+        return "0:00";
+      }
+
+      const minutes = Math.floor(time / 60);
+
+      const seconds = Math.floor(time % 60)
+        .toString()
+        .padStart(2, "0");
+
+      return `${minutes}:${seconds}`;
+    }
+
+    playButton.addEventListener("click", () => {
+      testAudio.play();
+    });
+
+    stopButton.addEventListener("click", () => {
+      testAudio.pause();
+      testAudio.currentTime = 0;
+
+      progress.value = 0;
+      currentTime.textContent = "0:00";
+    });
+
+    testAudio.addEventListener("loadedmetadata", () => {
+      duration.textContent = formatTime(testAudio.duration);
+    });
+
+    testAudio.addEventListener("timeupdate", () => {
+      if (!testAudio.duration) {
+        return;
+      }
+
+      progress.value =
+        (testAudio.currentTime / testAudio.duration) * 100;
+
+      currentTime.textContent =
+        formatTime(testAudio.currentTime);
+    });
+
+    progress.addEventListener("input", () => {
+      if (!testAudio.duration) {
+        return;
+      }
+
+      testAudio.currentTime =
+        (progress.value / 100) * testAudio.duration;
+    });
+
+    testAudio.addEventListener("ended", () => {
+      progress.value = 0;
+      currentTime.textContent = "0:00";
     });
   </script>
 
