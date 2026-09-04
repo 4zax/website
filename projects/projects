@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Projects - Azax's Website</title>
+  <style>
+    :root {
+      --bg-default: #0d1117;
+      --bg-subtle: #161b22;
+      --border: #30363d;
+      --text-main: #c9d1d9;
+      --cyan: #00ffff;
+      --red: #ff0000;
+    }
+
+    body {
+      background-color: var(--bg-default);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: var(--cyan);
+      margin: 0 0 32px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    .message {
+      margin: 0;
+    }
+
+    .project-card {
+      background-color: var(--bg-default);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .project-name {
+      margin: 0 0 8px 0;
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+
+    .project-description {
+      margin: 0 0 16px 0;
+      font-size: 0.95rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .project-tag {
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-family: "Consolas", "Courier New", monospace;
+    }
+
+    .project-links a {
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .menu-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .menu-button:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 999;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(300px, 80vw);
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 90px 24px 24px;
+      background: var(--bg-subtle);
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      z-index: 1000;
+    }
+
+    .menu.open {
+      transform: translateX(0);
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-title {
+      color: var(--cyan);
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .menu a {
+      display: block;
+      padding: 12px 10px;
+      margin-bottom: 6px;
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .menu a:hover {
+      color: var(--cyan);
+      background: var(--bg-default);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="menu-button" id="menuButton" aria-label="メニューを開く" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <nav class="menu" id="menu" aria-label="サイトメニュー">
+    <div class="menu-title">Menu</div>
+    <a href="/"><i class="fa-solid fa-house"></i> HOME</a>
+    <a href="/friends"><i class="fa-solid fa-face-smile"></i> Friends</a>
+    <a href="/projects"><i class="fa-solid fa-folder-open"></i> <b>Projects</b></a>
+  </nav>
+
+  <div class="container">
+    <h1 class="title">Projects</h1>
+
+    <hr>
+
+    <p class="message">
+      ここでは、Azaxが作った作品を展示します。
+    </p>
+
+    <hr>
+
+    <!--
+      作品を追加するときは、この project-card をコピーしてください。
+
+      <div class="project-card">
+        <h2 class="project-name">作品名</h2>
+        <p class="project-description">作品の説明</p>
+
+        <div class="project-tags">
+          <span class="project-tag">Minecraft</span>
+          <span class="project-tag">Java</span>
+        </div>
+
+        <div class="project-links">
+          <a href="https://github.com/4zax" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    -->
+  </div>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function setMenu(open) {
+      menu.classList.toggle("open", open);
+      menuOverlay.classList.toggle("open", open);
+      menuButton.setAttribute("aria-expanded", open);
+      menuButton.innerHTML = open
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    }
+
+    menuButton.addEventListener("click", () => {
+      setMenu(!menu.classList.contains("open"));
+    });
+
+    menuOverlay.addEventListener("click", () => setMenu(false));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenu(false);
+    });
+  </script>
+
+</body>
+</html>
