@@ -1,1 +1,384 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title id="pageTitle">Azaxerver 経済サバイバル鯖</title>
+
+  <style>
+    :root {
+      --bg-main: #0d1117;
+      --bg-subtle: #161b22;
+      --border: #30363d;
+      --text-main: #c9d1d9;
+      --text-sub: #8b949e;
+      --cyan: #00ffff;
+      --accent-green: #2ea043;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .header-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .back-btn {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--cyan);
+    }
+
+    .menu-button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .menu-button:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .article-container {
+      max-width: 680px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    .article-header {
+      margin-bottom: 32px;
+    }
+
+    .category-badge {
+      display: inline-block;
+      color: var(--cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .article-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+    }
+
+    .article-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      margin: 0 0 20px 0;
+    }
+
+    .author-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--border);
+      object-fit: cover;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .article-date {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .eyecatch-wrapper {
+      margin: 0 0 40px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .eyecatch-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      color: var(--text-main);
+    }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 40px 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-body p {
+      margin-bottom: 24px;
+    }
+
+    .article-body img {
+      max-width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      margin: 16px 0 24px;
+    }
+
+    .article-body blockquote {
+      margin: 24px 0;
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border-left: 4px solid var(--cyan);
+      color: var(--text-sub);
+    }
+
+    .action-bar {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+    }
+
+    .like-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .like-btn:hover {
+      border-color: #ff4757;
+      color: #ff4757;
+    }
+
+    .like-btn.liked {
+      background: rgba(255, 71, 87, 0.1);
+      border-color: #ff4757;
+      color: #ff4757;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 999;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(300px, 80vw);
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 90px 24px 24px;
+      background: var(--bg-subtle);
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      z-index: 1000;
+    }
+
+    .menu.open { transform: translateX(0); }
+    .menu-overlay.open { opacity: 1; visibility: visible; }
+    .menu-title { color: var(--cyan); font-size: 1.1rem; font-weight: bold; margin-bottom: 20px; }
+    .menu a { display: block; padding: 12px 10px; margin-bottom: 6px; color: var(--text-main); text-decoration: none; border-radius: 6px; }
+    .menu a:hover { color: var(--cyan); background: var(--bg-main); }
+  </style>
+</head>
+<body>
+
+  <header class="header-nav">
+    <a href="/history" class="back-link">
+      <i class="fa-solid fa-chevron-left"></i> History
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="メニューを開く" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <nav class="menu" id="menu" aria-label="サイトメニュー">
+    <div class="menu-title">Menu</div>
+    <a href="/"><i class="fa-solid fa-house"></i> HOME</a>
+    <a href="/friends"><i class="fa-solid fa-face-smile"></i> Friends</a>
+    <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+  </nav>
+
+  <main class="article-container">
+    <header class="article-header">
+      <span class="category-badge" id="category">Minecraft Servers</span>
+      <h1 class="article-title" id="title">Azaxerver 経済サバイバル鯖</h1>
+      <p class="article-subtitle" id="subtitle">1.21.11 Paperサーバー</p>
+      
+      <div class="author-meta">
+        <img src="" id="authorAvatar" class="author-avatar" alt="Author">
+        <div class="author-info">
+          <span class="author-name" id="authorName">Azax</span>
+          <span class="article-date" id="date">2026/07/06 ~ 2026/09/23</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="eyecatch-wrapper" id="eyecatchWrapper">
+      <img src="" id="eyecatchImage" class="eyecatch-image" alt="アイキャッチ">
+    </div>
+
+    <article class="article-body" id="bodyContent">
+    </article>
+
+    <div class="action-bar">
+      <button class="like-btn" id="likeBtn">
+        <i class="fa-regular fa-heart"></i>
+        <span id="likeCount">0</span>
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const CONFIG = {
+      category: "Minecraft Servers",
+      title: "Azaxerver 経済サバイバル鯖",
+      subtitle: "1.21.11 Paperサーバー",
+      date: "2026/07/06 ~ 2026/09/23",
+      authorName: "Azax",
+      authorAvatar: "/images/icon.png",
+      eyecatchImage: "/images/economy_survival_banner.png",
+      bodyHtml: `
+        <h2>title1</h2>
+        <p>text1</p>
+        
+        <blockquote>
+          test2。
+        </blockquote>
+
+        <h2>title2</h2>
+        <p>test3</p>
+        <ul>
+          <li>test4</li>
+          <li>test5</li>
+          <li>test6</li>
+        </ul>
+
+        <h2>test7</h2>
+        <img src="/images/sample_event.png" alt="イベント画像">
+      `
+    };
+
+    document.getElementById("pageTitle").textContent = CONFIG.title;
+    document.getElementById("category").textContent = CONFIG.category;
+    document.getElementById("title").textContent = CONFIG.title;
+    document.getElementById("subtitle").textContent = CONFIG.subtitle;
+    document.getElementById("date").textContent = CONFIG.date;
+    document.getElementById("authorName").textContent = CONFIG.authorName;
+    
+    const avatarEl = document.getElementById("authorAvatar");
+    if (CONFIG.authorAvatar) {
+      avatarEl.src = CONFIG.authorAvatar;
+    } else {
+      avatarEl.style.display = "none";
+    }
+
+    const eyecatchEl = document.getElementById("eyecatchImage");
+    if (CONFIG.eyecatchImage) {
+      eyecatchEl.src = CONFIG.eyecatchImage;
+    } else {
+      document.getElementById("eyecatchWrapper").style.display = "none";
+    }
+
+    document.getElementById("bodyContent").innerHTML = CONFIG.bodyHtml;
+
+    let likes = 0;
+    const likeBtn = document.getElementById("likeBtn");
+    const likeCount = document.getElementById("likeCount");
+    likeBtn.addEventListener("click", () => {
+      likeBtn.classList.toggle("liked");
+      const icon = likeBtn.querySelector("i");
+      if (likeBtn.classList.contains("liked")) {
+        likes++;
+        icon.className = "fa-solid fa-heart";
+      } else {
+        likes--;
+        icon.className = "fa-regular fa-heart";
+      }
+      likeCount.textContent = likes;
+    });
+
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function setMenu(open) {
+      menu.classList.toggle("open", open);
+      menuOverlay.classList.toggle("open", open);
+      menuButton.setAttribute("aria-expanded", open);
+      menuButton.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    }
+
+    menuButton.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+    menuOverlay.addEventListener("click", () => setMenu(false));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  </script>
+
+</body>
+</html>
