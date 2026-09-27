@@ -223,7 +223,37 @@
     overflow: hidden;
   }
 
+  .toggle-container {
+    position: relative;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--bg-subtle);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* 背景画像を設定する擬似要素 */
+  .toggle-container.has-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: var(--bg-image-url);
+    background-size: cover;
+    background-position: center right;
+    pointer-events: none;
+    z-index: -1;
+
+    /* 左側: 透明 (0%) から 右側: 不透明 (100%) へのグラデーションマスク */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+
   .toggle-header {
+    position: relative;
     padding: 16px 20px;
     font-size: 1.05rem;
     font-weight: 600;
@@ -242,7 +272,7 @@
   }
 
   .toggle-header:hover {
-    background-color: var(--bg-main);
+    background-color: rgba(13, 17, 23, 0.6);
     color: var(--cyan);
   }
 
@@ -260,10 +290,13 @@
   }
 
   .toggle-content {
+    position: relative;
     padding: 16px 20px 20px;
     border-top: 1px solid var(--border);
     color: var(--text-main);
     line-height: 1.7;
+    background-color: rgba(22, 27, 34, 0.75);
+    backdrop-filter: blur(4px);
   }
   </style>
 </head>
@@ -387,7 +420,7 @@
           意外とタイムアタックが白熱しててめっちゃよかった、まじでよかったこれ<br>
         </p>
 
-        <details class="toggle-container">
+        <details class="toggle-container has-bg" style="--bg-image-url: url('/athletic_copper_bg.png');>
           <summary class="toggle-header">タイムアタック記録 [銅]</summary>
           <div class="toggle-content">
             <p>
