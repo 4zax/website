@@ -153,39 +153,6 @@
       color: var(--text-sub);
     }
 
-    .action-bar {
-      margin-top: 60px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 16px;
-    }
-
-    .like-btn {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.95rem;
-      transition: all 0.2s;
-    }
-
-    .like-btn:hover {
-      border-color: #ff4757;
-      color: #ff4757;
-    }
-
-    .like-btn.liked {
-      background: rgba(255, 71, 87, 0.1);
-      border-color: #ff4757;
-      color: #ff4757;
-    }
-
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -330,13 +297,6 @@
 
     <article class="article-body" id="bodyContent">
     </article>
-
-    <div class="action-bar">
-      <button class="like-btn" id="likeBtn">
-        <i class="fa-regular fa-heart"></i>
-        <span id="likeCount">0</span>
-      </button>
-    </div>
   </main>
 
   <script>
@@ -489,22 +449,6 @@
     }
 
     document.getElementById("bodyContent").innerHTML = CONFIG.bodyHtml;
-
-    let likes = 0;
-    const likeBtn = document.getElementById("likeBtn");
-    const likeCount = document.getElementById("likeCount");
-    likeBtn.addEventListener("click", () => {
-      likeBtn.classList.toggle("liked");
-      const icon = likeBtn.querySelector("i");
-      if (likeBtn.classList.contains("liked")) {
-        likes++;
-        icon.className = "fa-solid fa-heart";
-      } else {
-        likes--;
-        icon.className = "fa-regular fa-heart";
-      }
-      likeCount.textContent = likes;
-    });
 
     const menuButton = document.getElementById("menuButton");
     const menu = document.getElementById("menu");
