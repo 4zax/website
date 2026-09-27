@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -102,8 +101,6 @@
       margin: 0 0 20px 0;
     }
 
-
-
     .eyecatch-wrapper {
       margin: 0 0 40px 0;
       border-radius: 8px;
@@ -129,6 +126,12 @@
       margin: 40px 0 16px 0;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
+    }
+
+    .article-body h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin: 28px 0 12px 0;
     }
 
     .article-body p {
@@ -182,7 +185,6 @@
       border-color: #ff4757;
       color: #ff4757;
     }
-    
 
     .menu-overlay {
       position: fixed;
@@ -215,89 +217,80 @@
     .menu a { display: block; padding: 12px 10px; margin-bottom: 6px; color: var(--text-main); text-decoration: none; border-radius: 6px; }
     .menu a:hover { color: var(--cyan); background: var(--bg-main); }
 
+    /* プルダウン（アコーディオン）スタイル */
     .toggle-container {
-    margin: 20px 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background-color: var(--bg-subtle);
-    overflow: hidden;
-  }
+      position: relative;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: var(--bg-subtle);
+      overflow: hidden;
+      z-index: 1;
+    }
 
-  .toggle-container {
-    position: relative;
-    margin: 20px 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background-color: var(--bg-subtle);
-    overflow: hidden;
-    z-index: 1;
-  }
+    .toggle-container.has-bg::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: var(--bg-image-url);
+      background-size: cover;
+      background-position: center right;
+      pointer-events: none;
+      z-index: -1;
 
-  /* 背景画像を設定する擬似要素 */
-  .toggle-container.has-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: var(--bg-image-url);
-    background-size: cover;
-    background-position: center right;
-    pointer-events: none;
-    z-index: -1;
+      -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    }
 
-    /* 左側: 透明 (0%) から 右側: 不透明 (100%) へのグラデーションマスク */
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-  }
+    .toggle-header {
+      position: relative;
+      padding: 16px 20px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background-color 0.2s;
+    }
 
-  .toggle-header {
-    position: relative;
-    padding: 16px 20px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #ffffff;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    transition: background-color 0.2s;
-  }
+    .toggle-header::-webkit-details-marker {
+      display: none;
+    }
 
-  .toggle-header::-webkit-details-marker {
-    display: none;
-  }
+    .toggle-header:hover {
+      background-color: rgba(13, 17, 23, 0.6);
+      color: var(--cyan);
+    }
 
-  .toggle-header:hover {
-    background-color: rgba(13, 17, 23, 0.6);
-    color: var(--cyan);
-  }
+    .toggle-header::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: var(--cyan);
+      transition: transform 0.25s ease;
+    }
 
-  .toggle-header::after {
-    content: "\f078";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    font-size: 0.9rem;
-    color: var(--cyan);
-    transition: transform 0.25s ease;
-  }
+    .toggle-container[open] .toggle-header::after {
+      transform: rotate(180deg);
+    }
 
-  .toggle-container[open] .toggle-header::after {
-    transform: rotate(180deg);
-  }
-
-  .toggle-content {
-    position: relative;
-    padding: 16px 20px 20px;
-    border-top: 1px solid var(--border);
-    color: var(--text-main);
-    line-height: 1.7;
-    background-color: rgba(22, 27, 34, 0.75);
-    backdrop-filter: blur(4px);
-  }
+    .toggle-content {
+      position: relative;
+      padding: 16px 20px 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-main);
+      line-height: 1.7;
+      background-color: rgba(22, 27, 34, 0.75);
+      backdrop-filter: blur(4px);
+    }
   </style>
 </head>
 <body>
@@ -366,7 +359,7 @@
 
         <h2>ワールド振り返り / 裏話</h2>
         <h3>ロビー</h3>
-      
+        
         <img src="lobby.png" alt="ロビー">
         <p>
           ロビーには"/lobby"でアクセスでき、<br>
@@ -414,24 +407,24 @@
         <img src="athletic_diamond.png" alt="アスレチックダイヤ">
         <p>
           "山頂 SEVEN日目"はPEAKから。<br>
-          (ゴール地点到達時の日本語訳の誤植。今は7日目になっている)
+          (ゴール地点到達時の日本語訳の誤植。今は7日目になっている)<br>
           <br>
           アスレチックにはタイムアタック機能を実装していましたね。<br>
           意外とタイムアタックが白熱しててめっちゃよかった、まじでよかったこれ<br>
         </p>
 
-        <details class="toggle-container has-bg" style="--bg-image-url: url('/athletic_copper_bg.png');>
+        <details class="toggle-container has-bg" style="--bg-image-url: url('/athletic_copper_bg.png');">
           <summary class="toggle-header">タイムアタック記録 [銅]</summary>
           <div class="toggle-content">
             <p>
-              <b>[#1]</b> n73e > 00:12:833</br>
-              <b>[#2]</b> 4zax > 00:12:839</br>
-              <b>[#3]</b> Carubi_204483 > 00:13:066</br>
-              <b>[#4]</b> koutyan35 > 00:13:237</br>
-              <b>[#5]</b> SabakanmelmPC > 00:13:563</br>
-              <b>[#6]</b> BE_haku6345 > 00:13:732</br>
-              <b>[#7]</b> Neko_1201 > 00:13:947</br>
-              <b>[#7]</b> rakotoyukkuri0 > 00:14:114</br>
+              <b>[#1]</b> n73e > 00:12:833<br>
+              <b>[#2]</b> 4zax > 00:12:839<br>
+              <b>[#3]</b> Carubi_204483 > 00:13:066<br>
+              <b>[#4]</b> koutyan35 > 00:13:237<br>
+              <b>[#5]</b> SabakanmelmPC > 00:13:563<br>
+              <b>[#6]</b> BE_haku6345 > 00:13:732<br>
+              <b>[#7]</b> Neko_1201 > 00:13:947<br>
+              <b>[#7]</b> rakotoyukkuri0 > 00:14:114<br>
               <b>[#7]</b> saon777 > 00:14:355
             </p>
           </div>
