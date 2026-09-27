@@ -182,6 +182,7 @@
       border-color: #ff4757;
       color: #ff4757;
     }
+    
 
     .menu-overlay {
       position: fixed;
@@ -213,6 +214,57 @@
     .menu-title { color: var(--cyan); font-size: 1.1rem; font-weight: bold; margin-bottom: 20px; }
     .menu a { display: block; padding: 12px 10px; margin-bottom: 6px; color: var(--text-main); text-decoration: none; border-radius: 6px; }
     .menu a:hover { color: var(--cyan); background: var(--bg-main); }
+
+    .toggle-container {
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--bg-subtle);
+    overflow: hidden;
+  }
+
+  .toggle-header {
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+
+  .toggle-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .toggle-header:hover {
+    background-color: var(--bg-main);
+    color: var(--cyan);
+  }
+
+  .toggle-header::after {
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.9rem;
+    color: var(--cyan);
+    transition: transform 0.25s ease;
+  }
+
+  .toggle-container[open] .toggle-header::after {
+    transform: rotate(180deg);
+  }
+
+  .toggle-content {
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-main);
+    line-height: 1.7;
+  }
   </style>
 </head>
 <body>
@@ -334,6 +386,23 @@
           アスレチックにはタイムアタック機能を実装していましたね。<br>
           意外とタイムアタックが白熱しててめっちゃよかった、まじでよかったこれ<br>
         </p>
+
+        <details class="toggle-container">
+          <summary class="toggle-header">タイムアタック記録 [銅]</summary>
+          <div class="toggle-content">
+            <p>
+              <b>[#1]</b> n73e > 00:12:833
+              <b>[#2]</b> 4zax > 00:12:839
+              <b>[#3]</b> Carubi_204483 > 00:13:066
+              <b>[#4]</b> koutyan35 > 00:13:237
+              <b>[#5]</b> SabakanmelmPC > 00:13:563
+              <b>[#6]</b> BE_haku6345 > 00:13:732
+              <b>[#7]</b> Neko_1201 > 00:13:947
+              <b>[#7]</b> rakotoyukkuri0 > 00:14:114
+              <b>[#7]</b> saon777 > 00:14:355
+            </p>
+          </div>
+        </details>
       `
     };
 
